@@ -77,7 +77,9 @@ export class RegisterFormComponent {
             this.form.controls.email.setValue(email);
           }
           else{
-            this.router.navigate(['/login'])
+            this.router.navigate(['/login'],{
+              queryParams:{email}
+            })
           }
           
         },
