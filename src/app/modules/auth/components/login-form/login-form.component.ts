@@ -41,7 +41,6 @@ export class LoginFormComponent {
         },
         error:()=>{
           this.status ='failed'
-          console.log("error login");
         }
       })
     } else {
