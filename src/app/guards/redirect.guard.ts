@@ -4,18 +4,15 @@ import { TokenService } from '@services/token.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RedirectGuard implements CanActivate {
-  constructor(
-    private tokenService: TokenService,
-    private router: Router
-    ){}
+  constructor(private tokenService: TokenService, private router: Router) {}
 
-  canActivate(): boolean{
+  canActivate(): boolean {
     const isValidToken = this.tokenService.isValidResfreshToken();
-    if(isValidToken){
-      this.router.navigate(['/app'])
+    if (isValidToken) {
+      this.router.navigate(['/']);
     }
     return true;
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { faPen, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +11,7 @@ import { RequestStatus } from "@models/request-status.model";
   selector: 'app-login-form',
   templateUrl: './login-form.component.html'
 })
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit{
 
   form = this.formBuilder.nonNullable.group({
     email: ['', [Validators.email, Validators.required]],
@@ -29,13 +29,17 @@ export class LoginFormComponent {
     private router: Router,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute
-  ) { 
+  ) {
+
     this.activatedRoute.queryParamMap.subscribe(params =>{
       const email = params.get('email')
       if(email){
         this.form.controls.email.setValue(email);
       }
     })
+  }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
   doLogin() {
